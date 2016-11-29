@@ -1,6 +1,14 @@
 /*Heat Map Styling*/
-heatmap {
-  width: 840px;
-  height: 400px;
-  display: block;
+div[ng-controller=LayerHeatmapCtrl] {
+  position:relative;
+}
+div[ng-controller=LayerHeatmapCtrl] #panel{
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  margin-left: -180px;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
 }

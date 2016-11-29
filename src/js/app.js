@@ -6,10 +6,9 @@
 
   angular
     .module('myApp', [
-      'heatmap',
+      'ngMap',
       'myApp.config',
       'myApp.components.main',
       'myApp.components.map'
     ]);
-
 })();
