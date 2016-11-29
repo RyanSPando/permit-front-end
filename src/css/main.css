@@ -1,0 +1,6 @@
+/*Heat Map Styling*/
+heatmap {
+  width: 840px;
+  height: 400px;
+  display: block;
+}
