@@ -3,6 +3,7 @@
 (function() {
 
   'use strict';
+  $.material.init();
 
   angular
     .module('myApp', [

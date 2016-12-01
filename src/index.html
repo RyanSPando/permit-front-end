@@ -6,24 +6,79 @@
     <!-- styles -->
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" href="/css/bootstrap-material-design.css" media="screen" title="no title">
+    <link rel="stylesheet" href="/css/ripples.css" media="screen" title="no title">
+    <script src="https://use.fontawesome.com/535058757b.js"></script>
   </head>
   <body ng-cloak>
+    <!-- Navbar -->
+    <nav class="navbar navbar-warning">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Appreciation</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="nav-collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">City
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Boulder</a></li>
+                <li><a href="#">Longmont</a></li>
+                <li><a href="#">Superior</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">View on Github<span class="sr-only"></span></a></li>
+            <li><a href="#">My Portfolio</a></li>
+          </ul>
+          <form class="navbar-form navbar-left">
+            <div class="form-group is-empty">
+              <input type="text" class="form-control" placeholder="Find Address">
+            </div>
+          </form>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
 
     <div class="container" ng-controller="mapController as vm">
       <div>
-        <div id="panel">
-          <button ng-click="vm.toggleHeatmap()">Toggle Heatmap</button>
-          <button ng-click="vm.changeGradient()">Change gradient</button>
-          <button ng-click="vm.changeRadius()">Change radius</button>
-          <button ng-click="vm.changeOpacity()">Change opacity</button>
-        </div>
-        <ng-map zoom="11" center="39.742043, -104.991531" map-type-id="hybrid">
-          <heatmap-layer id="foo" data="permitData"></heatmap-layer>
-          <kml-layer url="">
-          </kml-layer>
+        <ng-map zoom="10" center="40.0072998696373, -105.13449896240235" map-type-id="hybrid">
+          <!-- <heatmap-layer id="foo" data="permitData"></heatmap-layer> -->
+          <!-- <kml-layer url="https://raw.githubusercontent.com/RyanSPando/permit-front-end/master/src/map/ZillowNeighborhoods-CO.kml">
+          </kml-layer> -->
+          <fusion-tables-layer query= "{
+            select: 'col58',
+            from: '1mL-eAHwaUdf_rJ6KQm0NSQF8BcS900n8PGEc-xwg'}"
+            heatmap = '{enabled: true}'>
+          </fusion-tables-layer>
         </ng-map>
+        <div class="row" id="panel">
+          <button class="btn btn-raised col-sm-6 col-md-2" ng-click="vm.toggleHeatmap()">Heatmap</button>
+          <button class="btn btn-raised col-sm-6 col-md-2 col-md-offset-1" ng-click="vm.changeGradient()">Gradient</button>
+          <button class="btn btn-raised col-sm-6 col-md-2 col-md-offset-1" ng-click="vm.changeRadius()">Radius</button>
+          <button class="btn btn-raised col-sm-6 col-md-2 col-md-offset-1" ng-click="vm.changeOpacity()">Opacity</button>
+        </div>
       </div>
     </div>
+    <footer class="footer">
+      <div class="container-fluid bg-warning">
+        <p>
+          <a href="https://twitter.com/bootsnipp"><i class="fa fa-twitter-square fa-3x social"></i></a>
+          <a href="https://plus.google.com/+Bootsnipp-page"><i class="fa fa-google-plus-square fa-3x social"></i></a>
+          <a href="mailto:ryanspando@gmail.com"><i class="fa fa-envelope-square fa-3x social"></i></a>
+        </p>
+      </div>
+    </footer>
     <!-- scripts -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=visualization"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -31,7 +86,9 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.2/lodash.js"></script>
     <script type="text/javascript" src="js/angular-simple-logger.js"></script>
-
+    <!-- Material BootStrap -->
+    <script type="text/javascript" src="js/material.js"></script>
+    <script type="text/javascript" src="js/ripples.js"></script>
     <!-- Google Map Angular-->
     <script type="text/javascript" src="js/heat-layer.js"></script>
     <script type="text/javascript" src="js/angular-google-maps.js"></script>
@@ -39,7 +96,6 @@
     <!-- App -->
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/config.js"></script>
-
     <!-- main component -->
     <script type="text/javascript" src="js/components/main/main.controller.js"></script>
     <script type="text/javascript" src="js/components/map/map.controller.js"></script>
