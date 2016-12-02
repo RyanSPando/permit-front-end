@@ -7,7 +7,7 @@
 
   angular
     .module('myApp', [
-      'ngMap',
+      'uiGmapgoogle-maps',
       'myApp.config',
       'myApp.components.main',
       'myApp.components.map'

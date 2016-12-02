@@ -1,19 +1,7 @@
 /*Heat Map Styling*/
-div[ng-controller=LayerHeatmapCtrl] {
-  position:relative;
-}
-div[ng-controller=LayerHeatmapCtrl] #panel{
-  position: absolute;
-  top: 5px;
-  left: 50%;
-  margin-left: -180px;
-  z-index: 5;
-  background-color: #fff;
-  padding: 5px;
-  border: 1px solid #999;
-}
+.angular-google-map-container { height: 400px; }
 
-social footer.social:hover {
+.social footer.social:hover {
      -webkit-transform: scale(1.1);
      -moz-transform: scale(1.1);
      -o-transform: scale(1.1);

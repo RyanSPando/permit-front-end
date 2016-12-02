@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" href="/css/bootstrap-material-design.css" media="screen" title="no title">
     <link rel="stylesheet" href="/css/ripples.css" media="screen" title="no title">
-    <script src="https://use.fontawesome.com/535058757b.js"></script>
   </head>
   <body ng-cloak>
     <!-- Navbar -->
@@ -52,16 +51,41 @@
 
     <div class="container" ng-controller="mapController as vm">
       <div>
-        <ng-map zoom="10" center="40.0072998696373, -105.13449896240235" map-type-id="hybrid">
+        <!-- <ng-map zoom="10" center="40.0072998696373, -105.13449896240235" map-type-id="hybrid"> -->
           <!-- <heatmap-layer id="foo" data="permitData"></heatmap-layer> -->
           <!-- <kml-layer url="https://raw.githubusercontent.com/RyanSPando/permit-front-end/master/src/map/ZillowNeighborhoods-CO.kml">
           </kml-layer> -->
-          <fusion-tables-layer query= "{
-            select: 'col58',
-            from: '1mL-eAHwaUdf_rJ6KQm0NSQF8BcS900n8PGEc-xwg'}"
+          <!-- <fusion-tables-layer
+            query= "{
+              select: 'col58',
+              from: '1mL-eAHwaUdf_rJ6KQm0NSQF8BcS900n8PGEc-xwg',
+              where: {{vm.city}}
+            }",
             heatmap = '{enabled: true}'>
           </fusion-tables-layer>
-        </ng-map>
+        </ng-map> -->
+        <ui-gmap-google-map
+          center="vm.map.center"
+          zoom="vm.map.zoom"
+          control="vm.map.control"
+          options="vm.map.options">
+          <ui-gmap-layer
+            type="FusionTablesLayer"
+            options="vm.map.fusionlayer.options"
+            show="true">
+          </ui-gmap-layer>
+        </ui-gmap-google-map>
+        <div style="margin-top: 10px;">
+        <label class="citySelect">
+          City
+          <select ng-model="vm.city" id="search-string-city" ng-change="vm.changeCityMap(this.value);">
+            <option value="">-select--</option>
+            <option value="">(no selection)</option>
+            <option ng-repeat="city in vm.cityArr" value="{{city}}">{{city}}</option>
+         </select>
+        </label>
+        </div>
+        City: {{vm.city}}
         <div class="row" id="panel">
           <button class="btn btn-raised col-sm-6 col-md-2" ng-click="vm.toggleHeatmap()">Heatmap</button>
           <button class="btn btn-raised col-sm-6 col-md-2 col-md-offset-1" ng-click="vm.changeGradient()">Gradient</button>
@@ -99,5 +123,6 @@
     <!-- main component -->
     <script type="text/javascript" src="js/components/main/main.controller.js"></script>
     <script type="text/javascript" src="js/components/map/map.controller.js"></script>
+    <script src="https://use.fontawesome.com/535058757b.js"></script>
   </body>
 </html>
