@@ -7,9 +7,7 @@
 
   angular
     .module('myApp', [
-      'uiGmapgoogle-maps',
       'myApp.config',
-      'myApp.components.main',
-      'myApp.components.map'
+      'myApp.components.main'
     ]);
 })();

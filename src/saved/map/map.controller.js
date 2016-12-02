@@ -6,11 +6,11 @@
     .module('myApp.components.map', [])
     .controller('mapController', mapController);
 
-  mapController.$inject = ['$scope', 'uiGmapGoogleMapApi', 'uiGmapIsReady'];
+  mapController.$inject = ['$scope', 'uiGmapIsReady'];
 
-  function mapController($scope, uiGmapGoogleMapApi, uiGmapIsReady) {
+  function mapController($scope, uiGmapIsReady) {
     const vm = this;
-
+    vm.refresh = false;
     vm.city = '';
     vm.cityArr = [
     'ALLENSPARK',
@@ -43,15 +43,10 @@
       center: origCenter, zoom: 10,
       refresh: function () {
           vm.map.control.refresh(origCenter);
-        }
+        },
+      control: {},
+      fusionlayer: {}
     };
-
-    // vm.map.options = {
-    //   mapTypeId: 'HYBRID'
-    // };
-
-    vm.map.control = {};
-    vm.map.fusionlayer = {};
 
     vm.map.fusionlayer.options = {
         // https://developers.google.com/maps/documentation/javascript/reference#FusionTablesLayerOptions
@@ -59,14 +54,17 @@
         query: {
             select: "col58",
             from: "1mL-eAHwaUdf_rJ6KQm0NSQF8BcS900n8PGEc-xwg",
-            where: vm.city
+            where: `OriginalCity = ${vm.city} `
         },
-        suppressInfoWindows: false
+        suppressInfoWindows: false,
+        heatmap: {enabled: true}
     };
 
     vm.changeCityMap = function() {
-      $scope.$apply();
-      vm.map.control.refresh(origCenter);
+      vm.refresh = true;
+      setTimeout(function () {
+        vm.refresh = false;
+      }, 10);
     };
 
     vm.toggleHeatmap = function(event) {
@@ -94,11 +92,16 @@
     };
 
     vm.changeRadius = function() {
-      vm.map.set('radius', vm.map.get('radius') ? null : 20);
+      // vm.map.set('radius', vm.map.get('radius') ? null : 20);
+      vm.map.refresh();
     };
 
     vm.changeOpacity = function() {
       vm.map.set('opacity', vm.map.get('opacity') ? null : 0.2);
+    };
+
+    const init = () => {
+
     };
   }
 })();
