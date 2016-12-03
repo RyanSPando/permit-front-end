@@ -26,114 +26,67 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="nav-collapse">
           <ul class="nav navbar-nav navbar-left">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">City
-              <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Boulder</a></li>
-                <li><a href="#">Longmont</a></li>
-                <li><a href="#">Superior</a></li>
-              </ul>
-            </li>
           </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">View on Github<span class="sr-only"></span></a></li>
-            <li><a href="#">My Portfolio</a></li>
-          </ul>
-          <form class="navbar-form navbar-left">
-            <div class="form-group is-empty">
-              <input type="text" class="form-control" placeholder="Find Address">
-            </div>
-          </form>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
-    <div class="container">
-      <div>
-        <!-- <ng-map zoom="10" center="40.0072998696373, -105.13449896240235" map-type-id="hybrid"> -->
-          <!-- <heatmap-layer id="foo" data="permitData"></heatmap-layer> -->
-          <!-- <kml-layer url="https://raw.githubusercontent.com/RyanSPando/permit-front-end/master/src/map/ZillowNeighborhoods-CO.kml">
-          </kml-layer> -->
-          <!-- <fusion-tables-layer
-            query= "{
-              select: 'col58',
-              from: '1mL-eAHwaUdf_rJ6KQm0NSQF8BcS900n8PGEc-xwg',
-              where: {{vm.city}}
-            }",
-            heatmap = '{enabled: true}'>
-          </fusion-tables-layer>
-        </ng-map> -->
-        <!-- <ui-gmap-google-map
-          center="vm.map.center"
-          zoom="vm.map.zoom"
-          control="vm.map.control"
-          options="vm.map.options"
-          refresh="vm.refresh">
-          <ui-gmap-layer
-            type="FusionTablesLayer"
-            options="vm.map.fusionlayer.options"
-            show="true">
-          </ui-gmap-layer>
-        </ui-gmap-google-map> -->
-        <div id="map-canvas"></div>
-    <div style="margin-top: 10px;">
-      <label class="search">
-        City
-        <select id="search-string_0" onchange="changeMap_0(this.value);">
-          <option value="--Select--">--Select--</option>
-          <option value="">(no value)</option>
-          <option value="ALLENSPARK">ALLENSPARK</option>
-          <option value="BERTHOUD">BERTHOUD</option>
-          <option value="BOULDER">BOULDER</option>
-          <option value="BOULER">BOULER</option>
-          <option value="BROOMFIELD">BROOMFIELD</option>
-          <option value="ELDORA">ELDORA</option>
-          <option value="ELDORADO SPRINGS">ELDORADO SPRINGS</option>
-          <option value="ERIE">ERIE</option>
-          <option value="GOLD HILL">GOLD HILL</option>
-          <option value="GOLDEN">GOLDEN</option>
-          <option value="HYGIENE">HYGIENE</option>
-          <option value="JAMESTON">JAMESTON</option>
-          <option value="JAMESTOWN">JAMESTOWN</option>
-          <option value="LAFAYETTE">LAFAYETTE</option>
-          <option value="LONGMONT">LONGMONT</option>
-          <option value="LOUISVILLE">LOUISVILLE</option>
-          <option value="LYONS">LYONS</option>
-          <option value="MOUNTAINS">MOUNTAINS</option>
-          <option value="NEDERLAND">NEDERLAND</option>
-          <option value="NIWOT">NIWOT</option>
-          <option value="PINECLIFFE">PINECLIFFE</option>
-          <option value="RAYMOND">RAYMOND</option>
-          <option value="SUPERIOR">SUPERIOR</option>
-          <option value="UNINCORPORATED">UNINCORPORATED</option>
-          <option value="WARD">WARD</option>
-        </select>
-      </label>
-    </div>
-        <!-- <div style="margin-top: 10px;">
-        <label class="citySelect">
-          City
-          <select ng-model="vm.city" id="search-string-city" ng-change="vm.changeCityMap(this.value);">
-            <option value="">-select--</option>
-            <option value="">(no selection)</option>
-            <option ng-repeat="city in vm.cityArr" value="{{city}}">{{city}}</option>
-         </select>
-        </label>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="well col-md-4 col-sm-12" id="sidepanel">
+          <div class="">
+            <label class="search">
+              City
+              <select id="search-string_0" onchange="changeMap_0(this.value);">
+                <option value="--Select--">--Select--</option>
+                <option value="">(no value)</option>
+                <option value="ALLENSPARK">ALLENSPARK</option>
+                <option value="BERTHOUD">BERTHOUD</option>
+                <option value="BOULDER">BOULDER</option>
+                <option value="BOULER">BOULER</option>
+                <option value="BROOMFIELD">BROOMFIELD</option>
+                <option value="ELDORA">ELDORA</option>
+                <option value="ELDORADO SPRINGS">ELDORADO SPRINGS</option>
+                <option value="ERIE">ERIE</option>
+                <option value="GOLD HILL">GOLD HILL</option>
+                <option value="GOLDEN">GOLDEN</option>
+                <option value="HYGIENE">HYGIENE</option>
+                <option value="JAMESTON">JAMESTON</option>
+                <option value="JAMESTOWN">JAMESTOWN</option>
+                <option value="LAFAYETTE">LAFAYETTE</option>
+                <option value="LONGMONT">LONGMONT</option>
+                <option value="LOUISVILLE">LOUISVILLE</option>
+                <option value="LYONS">LYONS</option>
+                <option value="MOUNTAINS">MOUNTAINS</option>
+                <option value="NEDERLAND">NEDERLAND</option>
+                <option value="NIWOT">NIWOT</option>
+                <option value="PINECLIFFE">PINECLIFFE</option>
+                <option value="RAYMOND">RAYMOND</option>
+                <option value="SUPERIOR">SUPERIOR</option>
+                <option value="UNINCORPORATED">UNINCORPORATED</option>
+                <option value="WARD">WARD</option>
+              </select>
+            </label>
+          </div>
+          <div class="row" id="buttons">
+            <button class="btn btn-raised col-sm-12 col-md-5" id="Heatmap">Heatmap</button>
+            <button class="btn btn-raised col-sm-12 col-md-5 col-md-offset-1" id="Gradient">Gradient</button>
+            <button class="btn btn-raised col-sm-12 col-md-5" id="Radius">Radius</button>
+            <button class="btn btn-raised col-sm-12 col-md-5 col-md-offset-1" id="Opacity">Opacity</button>
+          </div>
         </div>
-        <div class="row" id="panel">
-          <button class="btn btn-raised col-sm-6 col-md-2" ng-click="vm.toggleHeatmap()">Heatmap</button>
-          <button class="btn btn-raised col-sm-6 col-md-2 col-md-offset-1" ng-click="vm.changeGradient()">Gradient</button>
-          <button class="btn btn-raised col-sm-6 col-md-2 col-md-offset-1" ng-click="vm.changeRadius()">Radius</button>
-          <button class="btn btn-raised col-sm-6 col-md-2 col-md-offset-1" ng-click="vm.changeOpacity()">Opacity</button>
+        <div class="col-md-8 col-sm-12">
+          <div id="map-canvas"></div>
         </div>
       </div>
-    </div> -->
+    </div>
+
     <footer class="footer">
-      <div class="container-fluid bg-warning">
-        <p>
-          <a href="https://twitter.com/bootsnipp"><i class="fa fa-twitter-square fa-3x social"></i></a>
-          <a href="https://plus.google.com/+Bootsnipp-page"><i class="fa fa-google-plus-square fa-3x social"></i></a>
+      <div class="container-fluid">
+        <p class="text-center">
+          <a href="http://ryanpando.com"><i class="fa fa-external-link-square fa-3x social" aria-hidden="true"></i></a>
+          <a href="https://twitter.com/Ryan_S_Pando"><i class="fa fa-twitter-square fa-3x social"></i></a>
+          <a href="https://www.github.com/ryanspando"><i class="fa fa-github-square fa-3x social"></i></a>
           <a href="mailto:ryanspando@gmail.com"><i class="fa fa-envelope-square fa-3x social"></i></a>
         </p>
       </div>
@@ -154,6 +107,7 @@
     <script type="text/javascript" src="https://apis.google.com/js/client.js?onload=ftOnLoadClientApi">
     </script>
     <script type="text/javascript" src="js/map.js"></script>
+    <script type="text/javascript" src="js/sidebar.js"></script>
     <!-- main component -->
     <script type="text/javascript" src="js/components/main/main.controller.js"></script>
     <script src="https://use.fontawesome.com/535058757b.js"></script>

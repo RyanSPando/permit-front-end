@@ -1,6 +1,6 @@
-
-  var map;
-  var layer_0;
+var map;
+var layer_0;
+(function () {
   function initialize() {
     map = new google.maps.Map(document.getElementById('map-canvas'), {
       center: new google.maps.LatLng(40.089629226126426, -105.30258178710938),
@@ -30,6 +30,7 @@
       heatmap: {enabled: true}
     });
   }
+
   function changeMap_0() {
     var whereClause;
     var searchString = document.getElementById('search-string_0').value.replace(/'/g, "\\'");
@@ -46,3 +47,4 @@
     });
   }
   google.maps.event.addDomListener(window, 'load', initialize);
+})();

@@ -92,16 +92,11 @@
     };
 
     vm.changeRadius = function() {
-      // vm.map.set('radius', vm.map.get('radius') ? null : 20);
-      vm.map.refresh();
+      vm.map.set('radius', vm.map.get('radius') ? null : 20);
     };
 
     vm.changeOpacity = function() {
       vm.map.set('opacity', vm.map.get('opacity') ? null : 0.2);
-    };
-
-    const init = () => {
-
     };
   }
 })();
