@@ -25,7 +25,6 @@
 
   $('#Radius').click(function(event) {
     layer_0.set('radius', layer_0.get('radius') ? null : 20);
-    console.log(layer_0);
   });
 
   $('#Opacity').click(function(event) {

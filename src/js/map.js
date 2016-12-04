@@ -1,5 +1,7 @@
 var map;
 var layer_0;
+var layer_1;
+var changeMap_0;
 (function () {
   function initialize() {
     map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -29,9 +31,13 @@ var layer_0;
       map: map,
       heatmap: {enabled: true}
     });
+    layer_1 = new google.maps.KmlLayer({
+        url: '../data/Munincipalities.kml',
+        map: map
+    });
   }
 
-  function changeMap_0() {
+  changeMap_0 = function() {
     var whereClause;
     var searchString = document.getElementById('search-string_0').value.replace(/'/g, "\\'");
     if (searchString != '--Select--') {
