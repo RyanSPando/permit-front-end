@@ -11,13 +11,15 @@
     <link href="saved/icon.png" rel="icon" type="image/x-icon" />
   </head>
   <body ng-cloak>
-    <div class="item">
-      <img class-"img-fluid" src="saved/image2.jpg" alt="House">
-      <input type="text" name="address" value="" placeholder="1111 Someplace RD Boulder CO 80510">
+    <div class="item transparent" id="splash">
+      <img class="img-fluid" src="saved/image2.jpg" alt="House">
+        <div class="form-group label-static" id="splash-input">
+          <input type="button" name="name" value="Start" id="splash-btn" class="btn btn-raised btn-danger">
+        </div>
       </img>
     </div>
     <!-- Navbar -->
-    <nav class="navbar navbar-warning">
+    <nav class="navbar navbar-warning" id="navbar">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
@@ -115,6 +117,7 @@
     </script>
     <script type="text/javascript" src="js/map.js"></script>
     <script type="text/javascript" src="js/sidebar.js"></script>
+    <script type="text/javascript" src="js/splash.js"></script>
     <!-- main component -->
     <script type="text/javascript" src="js/components/main/main.controller.js"></script>
     <script src="https://use.fontawesome.com/535058757b.js"></script>

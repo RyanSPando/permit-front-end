@@ -6,7 +6,7 @@ var changeMap_0;
   function initialize() {
     map = new google.maps.Map(document.getElementById('map-canvas'), {
       center: new google.maps.LatLng(40.089629226126426, -105.30258178710938),
-      zoom: 10
+      zoom: 11
     });
     var style = [
       {
@@ -33,7 +33,13 @@ var changeMap_0;
     });
     layer_1 = new google.maps.KmlLayer({
         url: 'https://raw.githubusercontent.com/RyanSPando/permit-front-end/KML-attempt/src/data/Municipalities.kml',
-        map: map
+        map: map,
+        preserveViewport: true
+    });
+    layer_2 = new google.maps.KmlLayer({
+        url: 'https://raw.githubusercontent.com/RyanSPando/permit-front-end/KML-attempt/src/data/allNeighborhoods.kml',
+        map: map,
+        preserveViewport: true
     });
   }
 
