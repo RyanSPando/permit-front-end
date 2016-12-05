@@ -1,14 +1,78 @@
-/*Heat Map Styling*/
-div[ng-controller=LayerHeatmapCtrl] {
-  position:relative;
+#map-canvas {
+  height: 80vh;
 }
-div[ng-controller=LayerHeatmapCtrl] #panel{
+
+#sidepanel {
+  height: 80vh;
+}
+
+.search {
+  font-family: sans-serif
+};
+
+
+a { color: #4B58A6; }
+a:hover { color: #4B58A6; }
+
+#map-canvas img {
+  max-width: none;
+}
+
+canvas {-ms-touch-action: double-tap-zoom;}
+
+.social footer.social:hover {
+     -webkit-transform: scale(1.1);
+     -moz-transform: scale(1.1);
+     -o-transform: scale(1.1);
+ }
+ .social {
+     -webkit-transform: scale(0.8);
+     /* Browser Variations: */
+
+     -moz-transform: scale(0.8);
+     -o-transform: scale(0.8);
+     -webkit-transition-duration: 0.5s;
+     -moz-transition-duration: 0.5s;
+     -o-transition-duration: 0.5s;
+ }
+
+/*
+    Multicoloured Hover Variations
+*/
+ #social-tw:hover {
+     color: #4099FF;
+ }
+ #social-gp:hover {
+     color: #d34836;
+ }
+ #social-em:hover {
+     color: #f39c12;
+ }
+
+ footer {
+    bottom: 0;
+    height: 40px;
+    left: 0;
+    position: fixed;
+    width:100%;
+    background-color: dimgrey;
+}
+
+.item {
+  height: 100vh;
+  width: 100vw;
+}
+
+#splash-input {
   position: absolute;
-  top: 5px;
-  left: 50%;
-  margin-left: -180px;
-  z-index: 5;
-  background-color: #fff;
-  padding: 5px;
-  border: 1px solid #999;
+  left: 46vw;
+  top: 40vh;
+}
+
+.transparent{
+  background:rgba(50, 50, 50, 0.6);
+}
+
+.white{
+  background:rgba(255, 255, 255, 0.2);
 }
