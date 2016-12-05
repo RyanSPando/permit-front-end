@@ -32,7 +32,7 @@ var changeMap_0;
       heatmap: {enabled: true}
     });
     layer_1 = new google.maps.KmlLayer({
-        url: '../data/Munincipalities.kml',
+        url: 'https://raw.githubusercontent.com/RyanSPando/permit-front-end/KML-attempt/src/data/Municipalities.kml',
         map: map
     });
   }
