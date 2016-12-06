@@ -5,7 +5,7 @@ var layer_2;
 var changeMap_0;
 
 (function () {
-  const url = 'https://permit-node-server.herokuapp.com/';
+  const url = 'https://permit-node-server.herokuapp.com/data/getPermits';
   function initialize() {
     map = new google.maps.Map(document.getElementById('map-canvas'), {
       center: new google.maps.LatLng(40.089629226126426, -105.30258178710938),
