@@ -5,6 +5,7 @@ var layer_2;
 var changeMap_0;
 
 (function () {
+  const url = 'https://permit-node-server.herokuapp.com/';
   function initialize() {
     map = new google.maps.Map(document.getElementById('map-canvas'), {
       center: new google.maps.LatLng(40.089629226126426, -105.30258178710938),
@@ -29,7 +30,7 @@ var changeMap_0;
 
     const today = new Date();
     const currentDate = `${today.getFullYear()}-${(today.getMonth() + 1)}`;
-    $.ajax(`http://localhost:3000/data/getPermits?AppliedDate=${currentDate}`)
+    $.ajax(`${url}?AppliedDate=${currentDate}`)
     .then(pinData => {
       const heatLayerData = pinData.map(permit => new google.maps.LatLng(permit.LAT, permit.LON));
       layer_0 = new google.maps.visualization.HeatmapLayer({
@@ -78,7 +79,7 @@ var changeMap_0;
     }
     var  searchDate = $('#when').val();
 
-    $.ajax(`http://localhost:3000/data/getPermits?AppliedDate=${searchDate}&OriginalCity=${searchCity}`)
+    $.ajax(`${url}?AppliedDate=${searchDate}&OriginalCity=${searchCity}`)
     .then(newPoints=> {
       const heatLayerData = newPoints.map(permit => new google.maps.LatLng(permit.LAT, permit.LON));
       layer_0.setData(heatLayerData);
