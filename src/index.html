@@ -7,12 +7,13 @@
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" href="/css/bootstrap-material-design.css" media="screen" title="no title">
+    <link rel="stylesheet" href="/css/MonthPicker.min.css" media="screen" title="no title">
     <link rel="stylesheet" href="/css/ripples.css" media="screen" title="no title">
     <link href="saved/icon.png" rel="icon" type="image/x-icon" />
   </head>
   <body ng-cloak>
     <div class="item transparent" id="splash">
-      <img class="img-fluid" src="saved/image2.jpg" alt="House">
+      <img class="img-fluid" src="saved/image2.jpg" alt="House" id="splash-img">
         <div class="form-group label-static" id="splash-input">
           <input type="button" name="name" value="Start" id="splash-btn" class="btn btn-raised btn-danger">
         </div>
@@ -72,6 +73,10 @@
                 <option value="UNINCORPORATED">UNINCORPORATED</option>
                 <option value="WARD">WARD</option>
               </select>
+            </label>
+            <label class="search">
+              Date
+              <input id="when" name="when" type="month" onchange="changeMap_0(this.value);">
             </label>
           </div>
           <div class="row" id="buttons">

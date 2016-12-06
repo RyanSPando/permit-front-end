@@ -1,7 +1,9 @@
 var map;
 var layer_0;
 var layer_1;
+var layer_2;
 var changeMap_0;
+
 (function () {
   function initialize() {
     map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -21,42 +23,67 @@ var changeMap_0;
       map: map,
       name: 'Styled Map'
     });
+
     map.mapTypes.set('map-style', styledMapType);
     map.setMapTypeId('map-style');
-    layer_0 = new google.maps.FusionTablesLayer({
-      query: {
-        select: "'LAT'",
-        from: "1mL-eAHwaUdf_rJ6KQm0NSQF8BcS900n8PGEc-xwg"
-      },
-      map: map,
-      heatmap: {enabled: true}
-    });
-    layer_1 = new google.maps.KmlLayer({
-        url: 'https://raw.githubusercontent.com/RyanSPando/permit-front-end/KML-attempt/src/data/Municipalities.kml',
+
+    const today = new Date();
+    const currentDate = `${today.getFullYear()}-${(today.getMonth() + 1)}`;
+    $.ajax(`http://localhost:3000/data/getPermits?AppliedDate=${currentDate}`)
+    .then(pinData => {
+      const heatLayerData = pinData.map(permit => new google.maps.LatLng(permit.LAT, permit.LON));
+      layer_0 = new google.maps.visualization.HeatmapLayer({
+        data:heatLayerData,
         map: map,
-        preserveViewport: true
-    });
-    layer_2 = new google.maps.KmlLayer({
-        url: 'https://raw.githubusercontent.com/RyanSPando/permit-front-end/KML-attempt/src/data/allNeighborhoods.kml',
-        map: map,
-        preserveViewport: true
+        gradient:[
+          'rgba(0, 255, 255, 0)',
+          'rgba(0, 255, 255, 1)',
+          'rgba(0, 191, 255, 1)',
+          'rgba(0, 127, 255, 1)',
+          'rgba(0, 63, 255, 1)',
+          'rgba(0, 0, 255, 1)',
+          'rgba(0, 0, 223, 1)',
+          'rgba(0, 0, 191, 1)',
+          'rgba(0, 0, 159, 1)',
+          'rgba(0, 0, 127, 1)',
+          'rgba(63, 0, 91, 1)',
+          'rgba(127, 0, 63, 1)',
+          'rgba(191, 0, 31, 1)',
+          'rgba(255, 0, 0, 1)'
+        ],
+        radius: 20,
+        dissipating: true,
+        maxIntensity: 10
+      });
+
+      layer_1 = new google.maps.KmlLayer({
+          url: 'https://raw.githubusercontent.com/RyanSPando/permit-front-end/KML-attempt/src/data/Municipalities.kml',
+          map: map,
+          preserveViewport: true
+      });
+
+      layer_2 = new google.maps.KmlLayer({
+          url: 'https://raw.githubusercontent.com/RyanSPando/permit-front-end/KML-attempt/src/data/allNeighborhoods.kml',
+          map: map,
+          preserveViewport: true
+      });
     });
   }
 
   changeMap_0 = function() {
     var whereClause;
-    var searchString = document.getElementById('search-string_0').value.replace(/'/g, "\\'");
-    if (searchString != '--Select--') {
-      whereClause = "'OriginalCity' = '" + searchString + "'";
+    var searchCity = $('#search-string_0').val().replace(/'/g, "\\'");
+    if (searchCity !== '--Select--' || searchCity !== '') {
+      whereClause = "'OriginalCity' = '" + searchCity + "'";
     }
-    layer_0.setOptions({
-      query: {
-        select: "'LAT'",
-        from: "1mL-eAHwaUdf_rJ6KQm0NSQF8BcS900n8PGEc-xwg",
-        where: whereClause
-      },
-      heatmap: {enabled: true}
+    var  searchDate = $('#when').val();
+
+    $.ajax(`http://localhost:3000/data/getPermits?AppliedDate=${searchDate}&OriginalCity=${searchCity}`)
+    .then(newPoints=> {
+      const heatLayerData = newPoints.map(permit => new google.maps.LatLng(permit.LAT, permit.LON));
+      layer_0.setData(heatLayerData);
     });
-  }
+  };
+
   google.maps.event.addDomListener(window, 'load', initialize);
 })();
