@@ -80,3 +80,7 @@ canvas {-ms-touch-action: double-tap-zoom;}
 #splash-img {
   z-index: -5;
 }
+
+#auto-input {
+  width: 200px;
+}

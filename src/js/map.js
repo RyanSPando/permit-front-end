@@ -3,8 +3,10 @@ var layer_0;
 var layer_1;
 var layer_2;
 var changeMap_0;
+var autocomplete;
 
 (function () {
+
   const url = 'https://permit-node-server.herokuapp.com/data/getPermits';
   function initialize() {
     map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -69,6 +71,13 @@ var changeMap_0;
           preserveViewport: true
       });
     });
+
+    //=======AutoComplete=======//
+
+    var input = document.getElementById('auto-input');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.setTypes( [ 'geocode' ] );
+    autocomplete.bindTo('bounds', map);
   }
 
   changeMap_0 = function() {
