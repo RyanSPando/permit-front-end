@@ -68,9 +68,14 @@ canvas {-ms-touch-action: double-tap-zoom;}
   top: 40vh;
 }
 
-.transparent{
+#top {
+  color: red;
   background:rgba(50, 50, 50, 0.6);
-  z-index: 5;
+  position: absolute;
+  width: 100vw;
+  height: 40vh;
+  top: -3vh;
+  left: 0;
 }
 
 .white{

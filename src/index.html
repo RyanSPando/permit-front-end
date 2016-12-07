@@ -2,7 +2,7 @@
 <html lang="en" ng-app="myApp">
   <head>
     <meta charset="utf-8">
-    <title>Untitled</title>
+    <title>Appreciation</title>
     <!-- styles -->
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -11,8 +11,9 @@
     <link href="saved/icon.png" rel="icon" type="image/x-icon" />
   </head>
   <body ng-cloak>
-    <div class="item transparent" id="splash">
+    <div class="" id="splash">
       <img class="img-fluid" src="saved/image2.jpg" alt="House" id="splash-img">
+      <h2 class="transparent" id="top">Appreciation</h2>
         <div class="form-group label-static" id="splash-input">
           <input class="" type="text" name="name" value="" id="auto-input" placeholder="Address">
           <input type="button" name="name" value="Start" id="splash-btn" class="btn btn-raised btn-danger">
@@ -29,7 +30,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Appreciation</a>
+          <a class="navbar-brand" href="/">Appreciation</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -80,10 +81,34 @@
             </label>
           </div>
           <div class="row" id="buttons">
-            <button class="btn btn-raised col-sm-12 col-md-5" id="Heatmap">Heatmap</button>
-            <button class="btn btn-raised col-sm-12 col-md-5 col-md-offset-1" id="Gradient">Gradient</button>
-            <button class="btn btn-raised col-sm-12 col-md-5" id="Radius">Radius</button>
-            <button class="btn btn-raised col-sm-12 col-md-5 col-md-offset-1" id="Opacity">Opacity</button>
+            <div class="togglebutton col-sm-12 col-md-5">
+              <label>
+                <input type="checkbox" checked="" id="Heatmap"> Heatmap
+              </label>
+            </div>
+            <div class="togglebutton col-sm-12 col-md-5 col-md-offset-1">
+              <label>
+                <input type="checkbox" checked="" id="Gradient"> Gradient
+              </label>
+            </div>
+            <div class="togglebutton col-sm-12 col-md-5">
+              <label>
+                <input type="checkbox" checked="" id="Radius"> Radius
+              </label>
+            </div>
+            <div class="togglebutton col-sm-12 col-md-5 col-md-offset-1">
+              <label>
+                <input type="checkbox" checked="" id="Opacity"> Opacity
+              </label>
+            </div>
+          </div>
+          <div class="row" id="zillow">
+            <div class="col-xs-12">
+              Adress: <span id="address"></span>
+            </div>
+            <div class="col-xs-12">
+              Zillow Price:<span id="zillow-price"></span>
+            </div>
           </div>
         </div>
         <div class="col-md-8 col-sm-12">
@@ -91,8 +116,8 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <iframe width="500" height="300" scrolling="yes" frameborder="yes" src="https://fusiontables.google.com/embedviz?containerId=googft-gviz-canvas&amp;q=select+col4%2C+SUM(col39)+from+1mL-eAHwaUdf_rJ6KQm0NSQF8BcS900n8PGEc-xwg+group+by+col4+order+by+SUM(col39)+asc+limit+15&amp;viz=GVIZ&amp;t=PIE&amp;uiversion=2&amp;gco_forceIFrame=true&amp;gco_hasLabelsColumn=true&amp;width=500&amp;height=300"></iframe>
+    <div class="row" style="height:200px;">
+
     </div>
 
     <footer class="footer">
