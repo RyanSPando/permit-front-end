@@ -34,7 +34,7 @@ var autocomplete;
     const currentDate = `${today.getFullYear()}-${(today.getMonth() + 1)}`;
     $.ajax(`${url}?AppliedDate=${currentDate}`)
     .then(pinData => {
-      const heatLayerData = pinData.map(permit => new google.maps.LatLng(permit.LAT, permit.LON));
+      const heatLayerData = pinData.map(permit => new google.maps.LatLng(permit.lat, permit.lon));
       layer_0 = new google.maps.visualization.HeatmapLayer({
         data:heatLayerData,
         map: map,
@@ -79,7 +79,7 @@ var autocomplete;
     autocomplete.setTypes( [ 'geocode' ] );
     autocomplete.bindTo('bounds', map);
   }
-
+  //======Functions=====
   changeMap_0 = function() {
     var whereClause;
     var searchCity = $('#search-string_0').val().replace(/'/g, "\\'");
@@ -90,7 +90,7 @@ var autocomplete;
 
     $.ajax(`${url}?AppliedDate=${searchDate}&OriginalCity=${searchCity}`)
     .then(newPoints=> {
-      const heatLayerData = newPoints.map(permit => new google.maps.LatLng(permit.LAT, permit.LON));
+      const heatLayerData = newPoints.map(permit => new google.maps.LatLng(permit.lat, permit.lon));
       layer_0.setData(heatLayerData);
     });
   };
