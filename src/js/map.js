@@ -7,7 +7,37 @@ var autocomplete;
 
 (function () {
 
+  var gradient = [
+    'rgba(0, 255, 255, 0)',
+    'rgba(0, 255, 255, 1)',
+    'rgba(0, 191, 255, 1)',
+    'rgba(0, 127, 255, 1)',
+    'rgba(0, 63, 255, 1)',
+    'rgba(0, 0, 255, 1)',
+    'rgba(0, 0, 223, 1)',
+    'rgba(0, 0, 191, 1)',
+    'rgba(0, 0, 159, 1)',
+    'rgba(0, 0, 127, 1)',
+    'rgba(63, 0, 91, 1)',
+    'rgba(127, 0, 63, 1)',
+    'rgba(191, 0, 31, 1)',
+    'rgba(255, 0, 0, 1)'
+  ];
+
   const url = 'https://permit-node-server.herokuapp.com/data/getPermits';
+
+  var gradientCss = '(bottom';
+  for (var i = 0; i < gradient.length; ++i) {
+    gradientCss += ', ' + gradient[i];
+  }
+  gradientCss += ')';
+
+
+  $('#legendGradient').css('background', '-webkit-linear-gradient' + gradientCss);
+  $('#legendGradient').css('background', '-moz-linear-gradient' + gradientCss);
+  $('#legendGradient').css('background', '-o-linear-gradient' + gradientCss);
+  $('#legendGradient').css('background', 'linear-gradient' + gradientCss);
+  var legend = document.getElementById('legend');
   function initialize() {
     map = new google.maps.Map(document.getElementById('map-canvas'), {
       center: new google.maps.LatLng(40.089629226126426, -105.30258178710938),
@@ -27,6 +57,7 @@ var autocomplete;
       name: 'Styled Map'
     });
 
+    map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
     map.mapTypes.set('map-style', styledMapType);
     map.setMapTypeId('map-style');
 
@@ -38,22 +69,7 @@ var autocomplete;
       layer_0 = new google.maps.visualization.HeatmapLayer({
         data:heatLayerData,
         map: map,
-        gradient:[
-          'rgba(0, 255, 255, 0)',
-          'rgba(0, 255, 255, 1)',
-          'rgba(0, 191, 255, 1)',
-          'rgba(0, 127, 255, 1)',
-          'rgba(0, 63, 255, 1)',
-          'rgba(0, 0, 255, 1)',
-          'rgba(0, 0, 223, 1)',
-          'rgba(0, 0, 191, 1)',
-          'rgba(0, 0, 159, 1)',
-          'rgba(0, 0, 127, 1)',
-          'rgba(63, 0, 91, 1)',
-          'rgba(127, 0, 63, 1)',
-          'rgba(191, 0, 31, 1)',
-          'rgba(255, 0, 0, 1)'
-        ],
+        gradient: gradient,
         radius: 20,
         dissipating: true,
         maxIntensity: 10
@@ -65,11 +81,12 @@ var autocomplete;
           preserveViewport: true
       });
 
-      layer_2 = new google.maps.KmlLayer({
-          url: 'https://raw.githubusercontent.com/RyanSPando/permit-front-end/KML-attempt/src/data/allNeighborhoods.kml',
-          map: map,
-          preserveViewport: true
-      });
+    //   layer_2 = new google.maps.KmlLayer({
+    //       url: 'https://raw.githubusercontent.com/RyanSPando/permit-front-end/KML-attempt/src/data/allNeighborhoods.kml',
+    //       map: map,
+    //       preserveViewport: true
+    //   });
+
     });
 
     //=======AutoComplete=======//

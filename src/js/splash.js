@@ -29,7 +29,9 @@ $(document).ready(function() {
               layer_0.setData(heatLayerData);
 
               var data = new google.visualization.DataTable();
+              var data2 = new google.visualization.DataTable();
 
+              var cityData = {};
               var permitData = [
                 ['January',  0],
                 ['February',  0],
@@ -45,14 +47,23 @@ $(document).ready(function() {
                 ['December',  0]
               ];
 
-              mapData.rows.forEach(permit => {
+              mapData.rows.forEach((permit) => {
                 let index = parseInt(permit.AppliedDate.slice(5, 7));
                 permitData[index - 1][1] += parseInt(permit.EstProjectCost);
+                cityData[permit.OriginalCity] = 1 + (cityData[permit.OriginalCity] || 0);
               });
+              const cityDataArr =[];
+
+              for (let value in cityData) {
+                cityDataArr.push([value, cityData[value]]);
+              }
 
               data.addColumn('string', 'Month');
               data.addColumn('number', 'Total Permit Value');
+              data2.addColumn('string', 'City');
+              data2.addColumn('number', 'Permit Number');
               data.addRows(permitData);
+              data2.addRows(cityDataArr);
 
               var options = {
                   title: 'Total permit value by Month',
@@ -69,15 +80,20 @@ $(document).ready(function() {
                     textPosition: 'none'
                   },
                   vAxis: {
-                    title: 'Total Permi Value USD'
+                    title: 'Total Permit Value USD'
                   },
                   legend: {
                     position: 'none'
                   }
                 };
+                var options2 = {
+                  title: 'Permit by City'
+                };
 
               var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
               chart.draw(data, options);
+              var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+              chart.draw(data2, options2);
             });
           });
         },1000);
