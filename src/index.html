@@ -13,15 +13,15 @@
   <body ng-cloak>
     <div class="" id="splash">
       <img class="img-fluid" src="saved/image2.jpg" alt="House" id="splash-img">
-      <h1 class="transparent" id="top">Appreciation</h1>
+      <strong><h1 class="transparent" id="top">Appreciation</h1></strong>
         <div class="form-group label-static" id="splash-input">
           <input class="" type="text" name="name" value="" id="auto-input" placeholder="Address">
-          <input type="button" name="name" value="Start" id="splash-btn" class="btn btn-raised btn-danger">
+          <input type="button" name="start" value="Start" id="splash-btn" class="btn btn-raised btn-danger">
         </div>
       </img>
     </div>
     <!-- Navbar -->
-    <nav class="navbar navbar-warning" id="navbar">
+    <nav class="navbar navbar-primary" id="navbar">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
@@ -43,74 +43,80 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="well col-md-4 col-sm-12" id="sidepanel">
-          <div class="">
-            <label class="search">
-              City
-              <select id="search-string_0" onchange="changeMap_0(this.value);">
-                <option value="--Select--">--Select--</option>
-                <option value="">(no value)</option>
-                <option value="ALLENSPARK">ALLENSPARK</option>
-                <option value="BERTHOUD">BERTHOUD</option>
-                <option value="BOULDER">BOULDER</option>
-                <option value="BROOMFIELD">BROOMFIELD</option>
-                <option value="ELDORA">ELDORA</option>
-                <option value="ELDORADO SPRINGS">ELDORADO SPRINGS</option>
-                <option value="ERIE">ERIE</option>
-                <option value="GOLD HILL">GOLD HILL</option>
-                <option value="GOLDEN">GOLDEN</option>
-                <option value="HYGIENE">HYGIENE</option>
-                <option value="JAMESTOWN">JAMESTOWN</option>
-                <option value="LAFAYETTE">LAFAYETTE</option>
-                <option value="LONGMONT">LONGMONT</option>
-                <option value="LOUISVILLE">LOUISVILLE</option>
-                <option value="LYONS">LYONS</option>
-                <option value="MOUNTAINS">MOUNTAINS</option>
-                <option value="NEDERLAND">NEDERLAND</option>
-                <option value="NIWOT">NIWOT</option>
-                <option value="PINECLIFFE">PINECLIFFE</option>
-                <option value="RAYMOND">RAYMOND</option>
-                <option value="SUPERIOR">SUPERIOR</option>
-                <option value="UNINCORPORATED">UNINCORPORATED</option>
-                <option value="WARD">WARD</option>
-              </select>
-            </label>
-            <label class="search">
-              Date
-              <input id="when" name="when" type="month" onchange="changeMap_0(this.value);">
-            </label>
-          </div>
-          <div class="row" id="buttons">
-            <div class="togglebutton col-sm-12 col-md-5">
-              <label>
-                <input type="checkbox" checked="" id="Heatmap"> Heatmap
+        <div class="col-md-4 col-sm-12">
+          <div class="panel panel-default" id="sidepanel">
+            <div class="panel-heading">
+              <h3 class="panel-title">Map Controls</h3>
+            </div>
+            <div class="panel-body">
+              <label class="search">
+                City
+                <select id="search-string_0" onchange="changeMap_0(this.value);">
+                  <option value="--Select--">--Select--</option>
+                  <option value="">(no value)</option>
+                  <option value="ALLENSPARK">ALLENSPARK</option>
+                  <option value="BERTHOUD">BERTHOUD</option>
+                  <option value="BOULDER">BOULDER</option>
+                  <option value="BROOMFIELD">BROOMFIELD</option>
+                  <option value="ELDORA">ELDORA</option>
+                  <option value="ELDORADO SPRINGS">ELDORADO SPRINGS</option>
+                  <option value="ERIE">ERIE</option>
+                  <option value="GOLD HILL">GOLD HILL</option>
+                  <option value="GOLDEN">GOLDEN</option>
+                  <option value="HYGIENE">HYGIENE</option>
+                  <option value="JAMESTOWN">JAMESTOWN</option>
+                  <option value="LAFAYETTE">LAFAYETTE</option>
+                  <option value="LONGMONT">LONGMONT</option>
+                  <option value="LOUISVILLE">LOUISVILLE</option>
+                  <option value="LYONS">LYONS</option>
+                  <option value="MOUNTAINS">MOUNTAINS</option>
+                  <option value="NEDERLAND">NEDERLAND</option>
+                  <option value="NIWOT">NIWOT</option>
+                  <option value="PINECLIFFE">PINECLIFFE</option>
+                  <option value="RAYMOND">RAYMOND</option>
+                  <option value="SUPERIOR">SUPERIOR</option>
+                  <option value="UNINCORPORATED">UNINCORPORATED</option>
+                  <option value="WARD">WARD</option>
+                </select>
+              </label>
+              <label class="search">
+                Date
+                <input id="when" name="when" type="month" onchange="changeMap_0(this.value);">
               </label>
             </div>
-            <div class="togglebutton col-sm-12 col-md-5 col-md-offset-1">
-              <label>
-                <input type="checkbox" checked="" id="Gradient"> Gradient
-              </label>
+            <div class="row" id="buttons">
+              <div class="togglebutton col-sm-12 col-md-5">
+                <label>
+                  <input type="checkbox" checked="" id="Heatmap"> Heatmap
+                </label>
+              </div>
+              <div class="togglebutton col-sm-12 col-md-5 col-md-offset-1">
+                <label>
+                  <input type="checkbox" checked="" id="Gradient"> Gradient
+                </label>
+              </div>
+              <div class="togglebutton col-sm-12 col-md-5">
+                <label>
+                  <input type="checkbox" checked="" id="Radius"> Radius
+                </label>
+              </div>
+              <div class="togglebutton col-sm-12 col-md-5 col-md-offset-1">
+                <label>
+                  <input type="checkbox" checked="" id="Opacity"> Opacity
+                </label>
+              </div>
             </div>
-            <div class="togglebutton col-sm-12 col-md-5">
-              <label>
-                <input type="checkbox" checked="" id="Radius"> Radius
-              </label>
-            </div>
-            <div class="togglebutton col-sm-12 col-md-5 col-md-offset-1">
-              <label>
-                <input type="checkbox" checked="" id="Opacity"> Opacity
-              </label>
-            </div>
-          </div>
-          <div class="row" id="zillow">
-            <div class="col-xs-12">
-              Adress: <span id="address"></span>
-            </div>
-            <div class="col-xs-12">
-              Zillow Price:<span id="zillow-price"></span>
+            <div class="row" id="zillow">
+              <div class="col-xs-12">
+                Adress: <span id="address"></span>
+              </div>
+              <div class="col-xs-12">
+                Zillow Price:<span id="zillow-price"></span>
+              </div>
             </div>
           </div>
         </div>
+
         <div class="col-md-8 col-sm-12">
           <div id="map-canvas"></div>
         </div>
