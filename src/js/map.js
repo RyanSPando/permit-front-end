@@ -3,8 +3,10 @@ var layer_0;
 var layer_1;
 var layer_2;
 var changeMap_0;
+var autocomplete;
 
 (function () {
+
   const url = 'https://permit-node-server.herokuapp.com/data/getPermits';
   function initialize() {
     map = new google.maps.Map(document.getElementById('map-canvas'), {
@@ -32,7 +34,7 @@ var changeMap_0;
     const currentDate = `${today.getFullYear()}-${(today.getMonth() + 1)}`;
     $.ajax(`${url}?AppliedDate=${currentDate}`)
     .then(pinData => {
-      const heatLayerData = pinData.map(permit => new google.maps.LatLng(permit.LAT, permit.LON));
+      const heatLayerData = pinData.map(permit => new google.maps.LatLng(permit.lat, permit.lon));
       layer_0 = new google.maps.visualization.HeatmapLayer({
         data:heatLayerData,
         map: map,
@@ -69,8 +71,15 @@ var changeMap_0;
           preserveViewport: true
       });
     });
-  }
 
+    //=======AutoComplete=======//
+
+    var input = document.getElementById('auto-input');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.setTypes( [ 'geocode' ] );
+    autocomplete.bindTo('bounds', map);
+  }
+  //======Functions=====
   changeMap_0 = function() {
     var whereClause;
     var searchCity = $('#search-string_0').val().replace(/'/g, "\\'");
@@ -81,7 +90,7 @@ var changeMap_0;
 
     $.ajax(`${url}?AppliedDate=${searchDate}&OriginalCity=${searchCity}`)
     .then(newPoints=> {
-      const heatLayerData = newPoints.map(permit => new google.maps.LatLng(permit.LAT, permit.LON));
+      const heatLayerData = newPoints.map(permit => new google.maps.LatLng(permit.lat, permit.lon));
       layer_0.setData(heatLayerData);
     });
   };

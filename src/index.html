@@ -2,7 +2,7 @@
 <html lang="en" ng-app="myApp">
   <head>
     <meta charset="utf-8">
-    <title>Untitled</title>
+    <title>Appreciation</title>
     <!-- styles -->
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -11,15 +11,17 @@
     <link href="saved/icon.png" rel="icon" type="image/x-icon" />
   </head>
   <body ng-cloak>
-    <div class="item transparent" id="splash">
+    <div class="" id="splash">
       <img class="img-fluid" src="saved/image2.jpg" alt="House" id="splash-img">
+      <strong><h1 class="transparent" id="top">Appreciation</h1></strong>
         <div class="form-group label-static" id="splash-input">
-          <input type="button" name="name" value="Start" id="splash-btn" class="btn btn-raised btn-danger">
+          <input class="" type="text" name="name" value="" id="auto-input" placeholder="Address">
+          <input type="button" name="start" value="Start" id="splash-btn" class="btn btn-raised btn-danger">
         </div>
       </img>
     </div>
     <!-- Navbar -->
-    <nav class="navbar navbar-warning" id="navbar">
+    <nav class="navbar navbar-primary" id="navbar">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-collapse" aria-expanded="false">
@@ -28,7 +30,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Appreciation</a>
+          <a class="navbar-brand" href="/">Appreciation</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -41,48 +43,78 @@
 
     <div class="container-fluid">
       <div class="row">
-        <div class="well col-md-4 col-sm-12" id="sidepanel">
-          <div class="">
-            <label class="search">
-              City
-              <select id="search-string_0" onchange="changeMap_0(this.value);">
-                <option value="--Select--">--Select--</option>
-                <option value="">(no value)</option>
-                <option value="ALLENSPARK">ALLENSPARK</option>
-                <option value="BERTHOUD">BERTHOUD</option>
-                <option value="BOULDER">BOULDER</option>
-                <option value="BROOMFIELD">BROOMFIELD</option>
-                <option value="ELDORA">ELDORA</option>
-                <option value="ELDORADO SPRINGS">ELDORADO SPRINGS</option>
-                <option value="ERIE">ERIE</option>
-                <option value="GOLD HILL">GOLD HILL</option>
-                <option value="GOLDEN">GOLDEN</option>
-                <option value="HYGIENE">HYGIENE</option>
-                <option value="JAMESTOWN">JAMESTOWN</option>
-                <option value="LAFAYETTE">LAFAYETTE</option>
-                <option value="LONGMONT">LONGMONT</option>
-                <option value="LOUISVILLE">LOUISVILLE</option>
-                <option value="LYONS">LYONS</option>
-                <option value="MOUNTAINS">MOUNTAINS</option>
-                <option value="NEDERLAND">NEDERLAND</option>
-                <option value="NIWOT">NIWOT</option>
-                <option value="PINECLIFFE">PINECLIFFE</option>
-                <option value="RAYMOND">RAYMOND</option>
-                <option value="SUPERIOR">SUPERIOR</option>
-                <option value="UNINCORPORATED">UNINCORPORATED</option>
-                <option value="WARD">WARD</option>
-              </select>
-            </label>
-            <label class="search">
-              Date
-              <input id="when" name="when" type="month" onchange="changeMap_0(this.value);">
-            </label>
-          </div>
-          <div class="row" id="buttons">
-            <button class="btn btn-raised col-sm-12 col-md-5" id="Heatmap">Heatmap</button>
-            <button class="btn btn-raised col-sm-12 col-md-5 col-md-offset-1" id="Gradient">Gradient</button>
-            <button class="btn btn-raised col-sm-12 col-md-5" id="Radius">Radius</button>
-            <button class="btn btn-raised col-sm-12 col-md-5 col-md-offset-1" id="Opacity">Opacity</button>
+        <div class="col-md-4 col-sm-12">
+          <div class="panel panel-default" id="sidepanel">
+            <div class="panel-heading">
+              <h3 class="panel-title">Map Controls</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-offset-1">
+                  <label class="search">
+                    City&nbsp;&nbsp;
+                    <select id="search-string_0" onchange="changeMap_0(this.value);">
+                      <option value="">--Select--</option>
+                      <option value="">(no value)</option>
+                      <option value="ALLENSPARK">ALLENSPARK</option>
+                      <option value="BERTHOUD">BERTHOUD</option>
+                      <option value="BOULDER">BOULDER</option>
+                      <option value="BROOMFIELD">BROOMFIELD</option>
+                      <option value="ELDORA">ELDORA</option>
+                      <option value="ELDORADO SPRINGS">ELDORADO SPRINGS</option>
+                      <option value="ERIE">ERIE</option>
+                      <option value="GOLD HILL">GOLD HILL</option>
+                      <option value="GOLDEN">GOLDEN</option>
+                      <option value="HYGIENE">HYGIENE</option>
+                      <option value="JAMESTOWN">JAMESTOWN</option>
+                      <option value="LAFAYETTE">LAFAYETTE</option>
+                      <option value="LONGMONT">LONGMONT</option>
+                      <option value="LOUISVILLE">LOUISVILLE</option>
+                      <option value="LYONS">LYONS</option>
+                      <option value="MOUNTAINS">MOUNTAINS</option>
+                      <option value="NEDERLAND">NEDERLAND</option>
+                      <option value="NIWOT">NIWOT</option>
+                      <option value="PINECLIFFE">PINECLIFFE</option>
+                      <option value="RAYMOND">RAYMOND</option>
+                      <option value="SUPERIOR">SUPERIOR</option>
+                      <option value="UNINCORPORATED">UNINCORPORATED</option>
+                      <option value="WARD">WARD</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-offset-1">
+                  <label class="search">
+                    Date
+                    <input id="when" name="when" type="month" onchange="changeMap_0(this.value);">
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row" id="buttons">
+              <div class="togglebutton col-sm-12 col-md-5 col-md-offset-1">
+                <label>
+                  <input type="checkbox" checked="" id="Heatmap"> Heatmap
+                </label>
+              </div>
+              <div class="togglebutton col-sm-12 col-md-5 col-md-offset-1">
+                <label>
+                  <input type="checkbox" checked="" id="Gradient"> Gradient
+                </label>
+              </div>
+              <div class="togglebutton col-sm-12 col-md-5 col-md-offset-1">
+                <label>
+                  <input type="checkbox" checked="" id="Radius"> Radius
+                </label>
+              </div>
+              <div class="togglebutton col-sm-12 col-md-5 col-md-offset-1">
+                <label>
+                  <input type="checkbox" checked="" id="Opacity"> Opacity
+                </label>
+              </div>
+            </div>
+            <div id="chart"></div>
           </div>
         </div>
         <div class="col-md-8 col-sm-12">
@@ -90,8 +122,8 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <iframe width="500" height="300" scrolling="yes" frameborder="yes" src="https://fusiontables.google.com/embedviz?containerId=googft-gviz-canvas&amp;q=select+col4%2C+SUM(col39)+from+1mL-eAHwaUdf_rJ6KQm0NSQF8BcS900n8PGEc-xwg+group+by+col4+order+by+SUM(col39)+asc+limit+15&amp;viz=GVIZ&amp;t=PIE&amp;uiversion=2&amp;gco_forceIFrame=true&amp;gco_hasLabelsColumn=true&amp;width=500&amp;height=300"></iframe>
+    <div class="row" style="height:200px;">
+
     </div>
 
     <footer class="footer">
@@ -115,8 +147,9 @@
     <!-- App -->
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/config.js"></script>
-    <!-- map -->
-    <script type="text/javascript" src="https://maps.google.com/maps/api/js?v=3&amp;libraries=visualization"></script>
+    <!-- map/chart -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?v=3&amp;libraries=visualization,places&amp;key=AIzaSyDd4dbNcsmcldfq6X8yzCfidMera_KTZDc"></script>
     <script type="text/javascript" src="https://apis.google.com/js/client.js?onload=ftOnLoadClientApi">
     </script>
     <script type="text/javascript" src="js/map.js"></script>

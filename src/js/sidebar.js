@@ -1,5 +1,6 @@
 (function () {
-  $('#Heatmap').click(function(event) {
+
+  $('#Heatmap').change(function(event) {
     layer_0.setMap(layer_0.getMap() ? null : map);
   });
 
